@@ -1,7 +1,8 @@
 import {combineReducers} from 'redux'
+import {reducer as data} from './data/reducer'
 
 const appReducer = combineReducers({
-  data: {}
+  data
 })
 
 const rootReducer = (state, action) => {

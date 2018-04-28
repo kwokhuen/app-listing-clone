@@ -1,11 +1,11 @@
 import React from 'react'
-import {Button} from 'antd'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Listing from 'scenes/Listing'
 
 export default () => (
   <Router>
     <Switch>
-      <Route path='/' exact render={() => <Button>hello</Button>} />
+      <Route path='/' exact component={Listing} />
     </Switch>
   </Router>
 )

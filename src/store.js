@@ -1,7 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import rootReducer from './rootReducer'
-// import {autoRehydrate} from 'redux-persist'
 
 console.log('DEBUG process.env.NODE_ENV', process.env.NODE_ENV)
 
