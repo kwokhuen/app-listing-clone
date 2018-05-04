@@ -9,6 +9,9 @@ import {List} from 'antd'
 import VerticalListItem from 'components/VerticalListItem'
 import InfiniteScroll from 'react-infinite-scroller'
 import Recommendation from './components/Recommendation'
+import dataHelper from 'helpers/dataHelper'
+import {getFilteredFreeApps} from 'data/freeApps/selectors'
+import {getSearchInputValue} from 'data/ui/globalSearch/selectors'
 const pageSize = 10
 
 class Listing extends React.Component {
@@ -27,12 +30,28 @@ class Listing extends React.Component {
 
   componentDidMount() {
     this.startLoading()
+    this.getFreshData()
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (!R.equals(nextProps.globalSearchInputValue, this.props.globalSearchInputValue)) {
+      this.resetDataSource(this.getFreshData)
+    }
+  }
+
+  getFreshData () {
+    this.startLoading()
     this.getDataSource().then((dataSource) => {
       this.stopLoading()
       this.setState({
-        dataSource: dataSource
+        dataSource: dataSource,
+        hasMore: true
       })
     })
+  }
+
+  resetDataSource (callback) {
+    this.setState({dataSource: []}, callback)
   }
 
   getDataSource () {
@@ -46,26 +65,14 @@ class Listing extends React.Component {
   getAppDetails (apps) {
     return Promise.all(
       R.map(app => {
-        const appId = this.getAppIdFromItem(app)
+        const appId = dataHelper.getAppIdFromItem(app)
+        const appDetail = this.getAppDetailFromAppId(appId)
+        if (appDetail) {
+          return Promise.resolve()
+        }
         return this.props.fetchAppDetail(appId)
       })(apps)
     )
-  }
-
-  getAppIdFromItem (item) {
-    return R.view(R.lensPath(['id', 'attributes', 'im:id']))(item)
-  }
-
-  getNameFromItem (item) {
-    return R.view(R.lensPath(['im:name', 'label']))(item)
-  }
-
-  getThumbUrlFromItem (item) {
-    return R.view(R.lensPath(['im:image', 2, 'label']))(item)
-  }
-
-  getCategoryFromItem (item) {
-    return R.view(R.lensPath(['category', 'attributes', 'label']))(item)
   }
 
   getAppDetailFromAppId (appId) {
@@ -140,7 +147,7 @@ class Listing extends React.Component {
             className='app-list'
             dataSource={this.state.dataSource}
             renderItem={(item, index) => {
-              const appId = this.getAppIdFromItem(item)
+              const appId = dataHelper.getAppIdFromItem(item)
               return (
                 <VerticalListItem
                   number={index + 1}
@@ -148,10 +155,10 @@ class Listing extends React.Component {
                   ratingCount={this.getUserRatingCountFromAppId(appId)}
                   {...this.isIndexEven(index) && {cropped: true}}
                   key={appId}
-                  title={this.getNameFromItem(item)}
-                  subtitle={this.getCategoryFromItem(item)}
+                  title={dataHelper.getNameFromItem(item)}
+                  subtitle={dataHelper.getCategoryFromItem(item)}
                   extra={'extra'}
-                  thumbUrl={this.getThumbUrlFromItem(item)} />
+                  thumbUrl={dataHelper.getThumbUrlFromItem(item)} />
               )
             }}
           >
@@ -165,8 +172,9 @@ class Listing extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    freeApps: state.data.freeApps,
-    appDetail: state.data.appDetail
+    freeApps: getFilteredFreeApps(state),
+    appDetail: state.data.appDetail,
+    globalSearchInputValue: getSearchInputValue(state)
   }
 }
 

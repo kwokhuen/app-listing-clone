@@ -2,38 +2,28 @@ import React from 'react'
 import R from 'ramda'
 import {connect} from 'react-redux'
 import HorizontalListItem from 'components/HorizontalListItem'
+import dataHelper from 'helpers/dataHelper'
+import {getFilteredTopGrossingApps} from 'data/topGrossingApps/selectors'
+import NoDataFill from 'components/NoDataFill'
 
 class Recommendation extends React.Component {
-  getNameFromItem (item) {
-    return R.view(R.lensPath(['im:name', 'label']))(item)
-  }
-
-  getThumbUrlFromItem (item) {
-    return R.view(R.lensPath(['im:image', 2, 'label']))(item)
-  }
-
-  getCategoryFromItem (item) {
-    return R.view(R.lensPath(['category', 'attributes', 'label']))(item)
-  }
-
-  getAppIdFromItem (item) {
-    return R.view(R.lensPath(['id', 'attributes', 'im:id']))(item)
-  }
-
   renderListItem () {
     const {topGrossingApps} = this.props
     return R.map(item => {
       return (
         <HorizontalListItem
-          key={this.getAppIdFromItem(item)}
-          thumbUrl={this.getThumbUrlFromItem(item)}
-          title={this.getNameFromItem(item)}
-          subtitle={this.getCategoryFromItem(item)} />
+          key={dataHelper.getAppIdFromItem(item)}
+          thumbUrl={dataHelper.getThumbUrlFromItem(item)}
+          title={dataHelper.getNameFromItem(item)}
+          subtitle={dataHelper.getCategoryFromItem(item)} />
       )
     })(topGrossingApps)
   }
 
   render () {
+    if (R.isEmpty(this.props.topGrossingApps)) {
+      return <NoDataFill fillText='No Data' height={231} />
+    }
     return (
       <div className='horizontal-list-wrapper'>
         {this.renderListItem()}
@@ -44,7 +34,7 @@ class Recommendation extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    topGrossingApps: state.data.topGrossingApps
+    topGrossingApps: getFilteredTopGrossingApps(state)
   }
 }
 
