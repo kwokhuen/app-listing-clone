@@ -1,0 +1,23 @@
+.horizontal-list-item-wrapper {
+  padding: 48px $space1x $space1x $space1x;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  .title {
+    padding: $space1x 0;
+  }
+  .thumbnail {
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+    }
+  }
+  .subtitle {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $grey400;
+  }
+}

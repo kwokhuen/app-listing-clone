@@ -1,5 +1,60 @@
-@import '~antd/dist/antd.css';
+/* Spacing */
+$space5x: 40px;
+$space4x: 32px;
+$space3x: 24px;
+$space2x: 16px;
+$space1x: 8px;
+$space05x: 4px;
 
-.hello {
-  background-color: red;
+/* Color */
+$grey600: #333333;
+$grey500: #4c4c4c;
+$grey400: #999999;
+$grey300: #d6d6d6;
+$grey200: #e4e5e6;
+$grey100: #f8f8f8;
+
+/* Font Size */
+$sizeHeading: 40px;
+$sizeNormal: 16px;
+$sizeSmall: 14px;
+$sizeExtraSmall: 12px;
+$sizeXXSmall: 10px;
+$sizeXXXSmall: 9px;
+$sizeXXXXSmall: 8px;
+
+$commonFamily: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+
+body {
+  font-family: $commonFamily;
 }
+
+.vertical-list-wrapper {
+  border-radius: 4px;
+  overflow: auto;
+  height: 100vh;
+  .footer {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+  }
+  .ant-list {
+    margin: 0px $space2x;
+  }
+  .ant-list-item {
+    width: 100vw;
+  }
+}
+
+.horizontal-list-wrapper {
+  display: flex;
+  overflow: scroll;
+  padding: 8px;
+  border-bottom: 1px solid $grey300;
+}
+
+
+@import '~antd/dist/antd.css';
+@import './components/verticalListItem.scss';
+@import './components/horizontalListItem.scss';
+@import './components/globalSearch.scss';

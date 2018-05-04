@@ -9,7 +9,7 @@ export const fetchTop100FreeApps = () => {
   return (dispatch, getState) => {
     return apiService.getTop100FreeApps()
     .then(response => {
-      const freeApps = responseHelper.getFreeAppList(response)
+      const freeApps = responseHelper.getEntry(response)
       dispatch({
         type: FETCH_TOP_100_FREE_APPS,
         freeApps

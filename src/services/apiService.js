@@ -20,6 +20,13 @@ export default config => {
       }
       return handleRequest(url, options)
     },
+    getTopGrossingApps: () => {
+      const url = urlHelper.constructUrl({url: `${ROOT_URL}/rss/topgrossingapplications/limit=10/json`})
+      const options = {
+        method: 'get'
+      }
+      return handleRequest(url, options)
+    },
     getAppDetail: (appId) => {
       const params = {
         id: appId

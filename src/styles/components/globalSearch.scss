@@ -1,0 +1,18 @@
+.global-search-wrapper {
+  position: absolute;
+  z-index: 1;
+  padding: 8px 16px;
+  background-color: $grey100;
+  width: 100vw;
+  .search-input {
+    .ant-input {
+      background-color: $grey200;
+      padding: 0px $space1x 0px 25px;
+    }
+    .ant-input-suffix {
+      width: 14px;
+      right: 0;
+      left: $space1x;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.vertical-list-item-wrapper {
+  border-bottom: 1px solid $grey300;
+  display: flex;
+  .number {
+    font-family: $commonFamily;
+    font-size: $sizeNormal;
+    color: $grey400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    min-width: 25px;
+  }
+  .ant-list-item-meta-title {
+    height: 22px;
+    margin: 0;
+  }
+  .ant-list-item-meta-avatar {
+    position: relative;
+    top: 3px;
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      &.cropped {
+        border-radius: 50%;
+      }
+    }
+  }
+  .ant-list-item-meta-description {
+    .rating-wrapper {
+      display: flex;
+      .count {
+        font-size: $sizeExtraSmall;
+        margin-left: $space05x;
+      }
+    }
+  }
+}
