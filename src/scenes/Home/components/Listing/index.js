@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import R from 'ramda'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'

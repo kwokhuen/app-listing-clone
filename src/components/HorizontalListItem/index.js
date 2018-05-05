@@ -6,7 +6,7 @@ class HorizontalListItem extends React.Component {
     const {thumbUrl, title, subtitle} = this.props
     return (
       <div className='horizontal-list-item-wrapper'>
-        <div className='thumbnail'><img src={thumbUrl} /></div>
+        <div className='thumbnail'><img src={thumbUrl} alt={title} /></div>
         <div className='title'><Ellipsis lines={2}>{title}</Ellipsis></div>
         <div className='subtitle'>{subtitle}</div>
       </div>

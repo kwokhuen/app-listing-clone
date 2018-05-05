@@ -1,7 +1,6 @@
 import R from 'ramda'
 
 const entryLens = R.lensPath(['feed', 'entry'])
-const resultsLens = R.lensProp('results')
 
 const getEntry = (response) => {
   return R.view(entryLens)(response)

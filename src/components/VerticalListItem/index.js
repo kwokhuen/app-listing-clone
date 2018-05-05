@@ -16,13 +16,13 @@ class VerticalListItem extends React.Component {
     )
   }
   render () {
-    const {title, subtitle, extra, thumbUrl, number, cropped, rating, ratingCount} = this.props
+    const {title, subtitle, thumbUrl, number, cropped, rating, ratingCount} = this.props
     return (
       <div className='vertical-list-item-wrapper'>
         <div className='number'>{number}</div>
         <List.Item>
           <List.Item.Meta
-            avatar={<img {...cropped && {className: 'cropped'}} src={thumbUrl} />}
+            avatar={<img {...cropped && {className: 'cropped'}} src={thumbUrl} alt={title}/>}
             title={<Ellipsis lines={1}>{title}</Ellipsis>}
             description={<div>
               <div>{subtitle}</div>
