@@ -11,6 +11,7 @@ class VerticalListItem extends React.Component {
         value={rating}
         count={5}
         size={14}
+        edit={false}
         color2='#fd9427' />
     )
   }

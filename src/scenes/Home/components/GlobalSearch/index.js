@@ -21,7 +21,7 @@ class GlobalSearch extends React.Component {
       <div className='global-search-wrapper'>
         <Search
           className='search-input'
-          placeholder="Search"
+          placeholder='搜尋'
           onChange={this.onChange} />
       </div>
     )

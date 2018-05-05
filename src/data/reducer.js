@@ -8,6 +8,7 @@ import {persistCombineReducers} from 'redux-persist'
 const dataPersistConfig = {
   key: 'data',
   storage,
+  blacklist: ['ui']
 }
 
 export const reducer = persistCombineReducers(dataPersistConfig, {

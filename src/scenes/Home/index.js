@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import Listing from './components/Listing'
 import GlobalSearch from './components/GlobalSearch'
+import Loading from 'components/Loading'
 import {fetchTop100FreeApps} from 'data/freeApps/actions'
 import {fetchTopGrossingApps} from 'data/topGrossingApps/actions'
 
@@ -24,7 +25,7 @@ class Home extends React.Component {
   }
 
   renderLoading () {
-    return <div>Loading.......</div>
+    return <Loading />
   }
 
   renderHome () {

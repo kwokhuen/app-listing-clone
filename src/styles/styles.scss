@@ -23,6 +23,14 @@ $sizeXXSmall: 10px;
 $sizeXXXSmall: 9px;
 $sizeXXXXSmall: 8px;
 
+/* ant-override */
+.ant-list-empty-text {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 $commonFamily: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 
 body {
@@ -53,9 +61,18 @@ body {
   border-bottom: 1px solid $grey300;
 }
 
+.recommendation {
+  margin-top: 48px;
+  .section-title {
+    padding: $space1x $space2x;
+    font-size: $sizeNormal;
+    color: $grey600;
+  }
+}
 
 @import '~antd/dist/antd.css';
 @import './components/verticalListItem.scss';
 @import './components/horizontalListItem.scss';
 @import './components/globalSearch.scss';
 @import './components/noDataFill.scss';
+@import './components/loading.scss';

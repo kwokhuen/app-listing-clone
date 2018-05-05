@@ -21,12 +21,17 @@ class Recommendation extends React.Component {
   }
 
   render () {
-    if (R.isEmpty(this.props.topGrossingApps)) {
-      return <NoDataFill fillText='No Data' height={231} />
-    }
     return (
-      <div className='horizontal-list-wrapper'>
-        {this.renderListItem()}
+      <div className='recommendation'>
+        <div className='section-title'>
+          推介
+        </div>
+        <div className='horizontal-list-wrapper'>
+          {R.isEmpty(this.props.topGrossingApps)
+            ? <NoDataFill fillText='No Data' height={167} />
+            : this.renderListItem()
+          }
+        </div>
       </div>
     )
   }
