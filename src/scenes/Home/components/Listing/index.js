@@ -149,7 +149,7 @@ class Listing extends React.Component {
               const appId = dataHelper.getAppIdFromItem(item)
               return (
                 <VerticalListItem
-                  number={index + 1}
+                  number={dataHelper.getRankFromItem(item)}
                   rating={this.getUserRatingFromAppId(appId)}
                   ratingCount={this.getUserRatingCountFromAppId(appId)}
                   {...this.isIndexEven(index) && {cropped: true}}

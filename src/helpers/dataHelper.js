@@ -8,6 +8,10 @@ const getNameFromItem = (item) => {
   return R.view(R.lensPath(['im:name', 'label']))(item)
 }
 
+const getRankFromItem = (item) => {
+  return R.view(R.lensProp('rank'))(item)
+}
+
 const getThumbUrlFromItem = (item) => {
   return R.view(R.lensPath(['im:image', 2, 'label']))(item)
 }
@@ -56,5 +60,6 @@ export default {
   getNameFromItem,
   getThumbUrlFromItem,
   getCategoryFromItem,
+  getRankFromItem,
   filterBy
 }
