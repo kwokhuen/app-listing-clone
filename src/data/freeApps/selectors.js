@@ -8,5 +8,5 @@ const getFreeApps = state => state.data.freeApps
 export const getFilteredFreeApps = createSelector([
   getSearchInputValue, getFreeApps
 ], (searchInputValue, freeApps) => {
-  return R.filter(dataHelper.filterBy(['name'], searchInputValue))(freeApps)
+  return R.filter(dataHelper.filterBy(['name', 'category', 'author', 'summary'], searchInputValue))(freeApps)
 })

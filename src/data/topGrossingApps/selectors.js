@@ -8,5 +8,5 @@ const getTopGrossingApps = state => state.data.topGrossingApps
 export const getFilteredTopGrossingApps = createSelector([
   getSearchInputValue, getTopGrossingApps
 ], (searchInputValue, topGrossingApps) => {
-  return R.filter(dataHelper.filterBy(['name'], searchInputValue))(topGrossingApps)
+  return R.filter(dataHelper.filterBy(['name', 'category', 'author', 'summary'], searchInputValue))(topGrossingApps)
 })
