@@ -14,7 +14,6 @@ class App extends React.Component {
 
   componentWillMount () {
     persistStore(store, {}, () => {
-      console.log('DEBUG store', store)
       this.setState({rehydrated: true})
     })
   }

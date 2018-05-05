@@ -48,7 +48,7 @@ body {
 
 .horizontal-list-wrapper {
   display: flex;
-  overflow: scroll;
+  overflow-x: scroll;
   padding: 8px;
   border-bottom: 1px solid $grey300;
 }
