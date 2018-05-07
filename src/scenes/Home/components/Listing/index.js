@@ -156,7 +156,6 @@ class Listing extends React.Component {
                   key={appId}
                   title={dataHelper.getNameFromItem(item)}
                   subtitle={dataHelper.getCategoryFromItem(item)}
-                  extra={'extra'}
                   thumbUrl={dataHelper.getThumbUrlFromItem(item)} />
               )
             }}

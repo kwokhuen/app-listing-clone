@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './app'
+import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import './styles/styles.css'
 import 'ant-design-pro/dist/ant-design-pro.css'

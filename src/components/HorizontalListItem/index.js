@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Ellipsis from 'ant-design-pro/lib/Ellipsis'
 
 class HorizontalListItem extends React.Component {
@@ -12,6 +13,12 @@ class HorizontalListItem extends React.Component {
       </div>
     )
   }
+}
+
+HorizontalListItem.propTypes = {
+  thumbUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired
 }
 
 export default HorizontalListItem

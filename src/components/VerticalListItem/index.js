@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ReactStars from 'react-stars'
 import {List} from 'antd'
 import Ellipsis from 'ant-design-pro/lib/Ellipsis'
@@ -22,7 +23,7 @@ class VerticalListItem extends React.Component {
         <div className='number'>{number}</div>
         <List.Item>
           <List.Item.Meta
-            avatar={<img {...cropped && {className: 'cropped'}} src={thumbUrl} alt={title}/>}
+            avatar={<img {...cropped && {className: 'cropped'}} src={thumbUrl} alt={title} />}
             title={<Ellipsis lines={1}>{title}</Ellipsis>}
             description={<div>
               <div>{subtitle}</div>
@@ -36,6 +37,20 @@ class VerticalListItem extends React.Component {
       </div>
     )
   }
+}
+
+VerticalListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  thumbUrl: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
+  cropped: PropTypes.bool.isRequired,
+  rating: PropTypes.number.isRequired,
+  ratingCount: PropTypes.number.isRequired
+}
+
+VerticalListItem.defaultProps = {
+  cropped: false
 }
 
 export default VerticalListItem

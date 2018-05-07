@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class NoDataFill extends React.Component {
   render () {
@@ -9,6 +10,11 @@ class NoDataFill extends React.Component {
       </div>
     )
   }
+}
+
+NoDataFill.propTypes = {
+  height: PropTypes.number.isRequired,
+  fillText: PropTypes.string.isRequired
 }
 
 export default NoDataFill
