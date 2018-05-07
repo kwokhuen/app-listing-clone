@@ -14,9 +14,9 @@ import {getSearchInputValue} from 'data/ui/globalSearch/selectors'
 const pageSize = 10
 
 class Listing extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-    this.state= {
+    this.state = {
       dataSource: [],
       loading: false,
       hasMore: true
@@ -27,7 +27,7 @@ class Listing extends React.Component {
     this.getAppDetailFromAppId = this.getAppDetailFromAppId.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.startLoading()
     this.getFreshData()
   }
@@ -106,7 +106,7 @@ class Listing extends React.Component {
     if (dataSource.length === this.props.freeApps.length) {
       this.stopLoading()
       this.setState({
-        hasMore: false,
+        hasMore: false
       })
       return
     }
@@ -158,9 +158,7 @@ class Listing extends React.Component {
                   subtitle={dataHelper.getCategoryFromItem(item)}
                   thumbUrl={dataHelper.getThumbUrlFromItem(item)} />
               )
-            }}
-          >
-          </List>
+            }} />
           {this.renderFooter()}
         </InfiniteScroll>
       </div>
